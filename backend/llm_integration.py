@@ -39,7 +39,7 @@ def call_llm_api(messages: List[dict]) -> str:
     payload = {
         "model": "integra-LLM",
         "messages": messages,
-        "temperature": 0.7,
+        "temperature": 0.6,
         "max_tokens": 512,  # Ajusta según necesidad
         "top_p": 1,
         "frequency_penalty": 0,
@@ -90,7 +90,7 @@ def create_messages(context: str, query: str) -> List[dict]:
     """Crea la lista de mensajes para el modelo."""
     system_message = {
         "role": "system",
-        "content": ("Eres un asistente experto en películas.")
+        "content": "Eres un asistente experto en películas."
     }
     user_message = {
         "role": "user",
@@ -107,7 +107,7 @@ def generate_response(user_query: str) -> str:
         # Recuperar fragmentos relevantes
         start_time = time.time()
         logger.debug("Iniciando búsqueda de similitud...")
-        k = 2
+        k = 1
         results = db.similarity_search(user_query, k=k)
         logger.debug(f"Búsqueda completada en {time.time() - start_time:.2f} segundos")
         
@@ -136,7 +136,7 @@ def generate_response(user_query: str) -> str:
                 logger.info(f"Nuevo total de tokens: {tokens_used}")
             else:
                 # Si solo queda un fragmento, recortar su contenido
-                context = context[:int(len(context) * 0.5)]  #! Recorta un 50%
+                context = context[:int(len(context) * 1)]  #! Recorta un 50%
                 messages = create_messages(context, user_query)
                 tokens_used = count_tokens_in_messages(messages)
                 logger.info(f"Nuevo total de tokens después de recortar: {tokens_used}")
@@ -165,7 +165,7 @@ def generate_response(user_query: str) -> str:
 def test_llm_api():
     messages = [
         {"role": "system", "content": "Eres un asistente de prueba."},
-        {"role": "user", "content": "Hola, ¿cómo estás?"}
+        {"role": "user", "content": "quién es el protagonista en the dark knight rises?"}
     ]
     response = call_llm_api(messages)
     print("Respuesta del LLM de prueba:")
