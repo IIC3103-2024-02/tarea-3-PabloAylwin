@@ -12,10 +12,11 @@ function App() {
       <header className="app-header">
         <h1>Tarantibot</h1>
       </header>
-      <Main />
+      <main className="app-main">
+        <Main />
+      </main>
     </div>
   );
 }
 
 export default App;
-
