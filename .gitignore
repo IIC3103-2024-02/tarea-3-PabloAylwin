@@ -1,0 +1,14 @@
+# Ignorar entornos virtuales
+backend/venv/
+backend/env/
+
+# Ignorar dependencias de Node.js
+frontend/node_modules/
+
+# Ignorar otros archivos o directorios innecesarios
+__pycache__/
+*.pyc
+.DS_Store
+
+# Ignorar archivos de configuración de entornos
+.env
