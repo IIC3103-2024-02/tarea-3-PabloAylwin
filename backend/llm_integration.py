@@ -90,12 +90,11 @@ def create_messages(context: str, query: str) -> List[dict]:
     """Crea la lista de mensajes para el modelo."""
     system_message = {
         "role": "system",
-        "content": ("Eres un asistente experto en películas. Utiliza el siguiente "
-                    f"contexto para responder las preguntas del usuario:\n{context}")
+        "content": ("Eres un asistente experto en películas.")
     }
     user_message = {
         "role": "user",
-        "content": query
+        "content": f"Pregunta: {query}\n\nContexto:\n{context}"
     }
     return [system_message, user_message]
 
