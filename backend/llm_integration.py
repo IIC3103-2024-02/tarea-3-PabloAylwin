@@ -54,8 +54,8 @@ def call_llm_api(messages: List[dict]) -> str:
         response = requests.post(
             url,
             json=payload,
-            headers=headers
-            #!timeout=120  # Timeout según documentación
+            headers=headers,
+            timeout=120  # Timeout según documentación
         )
         response.raise_for_status()  # Lanzar excepción si hay error HTTP
         
