@@ -7,7 +7,7 @@ app = FastAPI()
 
 # Configurar CORS
 origins = [
-    "https://tu-frontend.netlify.app",  # Reemplaza con la URL de tu frontend en Netlify
+    "https://tarantibot.netlify.app",  # Reemplaza con la URL de tu frontend en Netlify
     "http://localhost:3000",  # Para desarrollo local
 ]
 
