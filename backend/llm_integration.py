@@ -54,8 +54,8 @@ def call_llm_api(messages: List[dict]) -> str:
         response = requests.post(
             url,
             json=payload,
-            headers=headers,
-            timeout=120  # Timeout según documentación
+            headers=headers
+            #!timeout=120  # Timeout según documentación
         )
         response.raise_for_status()  # Lanzar excepción si hay error HTTP
         
@@ -108,7 +108,7 @@ def generate_response(user_query: str) -> str:
         # Recuperar fragmentos relevantes
         start_time = time.time()
         logger.debug("Iniciando búsqueda de similitud...")
-        k = 2
+        k = 3
         results = db.similarity_search(user_query, k=k)
         logger.debug(f"Búsqueda completada en {time.time() - start_time:.2f} segundos")
         

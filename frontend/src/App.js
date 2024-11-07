@@ -9,6 +9,9 @@ function App() {
       <Helmet>
         <title>Tarantibot</title>
       </Helmet>
+      <header className="app-header">
+        <h1>Tarantibot</h1>
+      </header>
       <Main />
     </div>
   );
