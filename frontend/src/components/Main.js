@@ -1,6 +1,8 @@
+// Main.js
 import React, { useState, useEffect, useRef } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import axios from 'axios';
+import './Main.css'; // Asegúrate de crear este archivo para estilos específicos
 
 function Main() {
   const [messages, setMessages] = useState([]); // Estado para almacenar los mensajes
@@ -44,53 +46,69 @@ function Main() {
 
   return (
     <div className="main-content flex-grow-1 d-flex flex-column">
-      <Container className="flex-grow-1 d-flex flex-column" style={{ maxWidth: '600px' }}>
-        <div
-          className="messages-container flex-grow-1 mb-3"
-          style={{
-            backgroundColor: '#f8f9fa',
-            borderRadius: '10px',
-            padding: '15px',
-            overflowY: 'auto',
-          }}
-        >
-          {messages.map((msg, index) => (
+      <Container className="flex-grow-1 d-flex flex-column position-relative" style={{ maxWidth: '800px' }}>
+        <Row className="flex-grow-1 d-flex align-items-center">
+          {/* Imagen Izquierda */}
+          <Col xs={2} className="d-none d-md-block text-center">
+            <img src="/image.png" alt="Left Decoration" className="side-image" />
+          </Col>
+
+          {/* Contenedor del Chat */}
+          <Col xs={8}>
             <div
-              key={index}
-              className={`d-flex ${msg.sender === 'user' ? 'justify-content-end' : 'justify-content-start'} mb-2`}
+              className="messages-container mb-3"
+              style={{
+                backgroundColor: '#f8f9fa',
+                borderRadius: '10px',
+                padding: '15px',
+                overflowY: 'auto',
+                height: '500px', // Ajusta la altura según necesidad
+              }}
             >
-              <div
-                style={{
-                  maxWidth: '80%',
-                  padding: '10px 15px',
-                  borderRadius: '15px',
-                  backgroundColor: msg.sender === 'user' ? '#007bff' : '#e9ecef',
-                  color: msg.sender === 'user' ? 'white' : 'black',
-                  textAlign: 'justify',
-                }}
-              >
-                {msg.text}
-              </div>
+              {messages.map((msg, index) => (
+                <div
+                  key={index}
+                  className={`d-flex ${msg.sender === 'user' ? 'justify-content-end' : 'justify-content-start'} mb-2`}
+                >
+                  <div
+                    style={{
+                      maxWidth: '80%',
+                      padding: '10px 15px',
+                      borderRadius: '15px',
+                      backgroundColor: msg.sender === 'user' ? '#007bff' : '#e9ecef',
+                      color: msg.sender === 'user' ? 'white' : 'black',
+                      textAlign: 'justify',
+                    }}
+                  >
+                    {msg.text}
+                  </div>
+                </div>
+              ))}
+              {loading && (
+                <div className="d-flex justify-content-start mb-2">
+                  <div
+                    style={{
+                      maxWidth: '80%',
+                      padding: '10px 15px',
+                      borderRadius: '15px',
+                      backgroundColor: '#e9ecef',
+                      color: 'black',
+                    }}
+                  >
+                    Escribiendo...
+                  </div>
+                </div>
+              )}
+              <div ref={messagesEndRef} /> {/* Referencia para el scroll */}
             </div>
-          ))}
-          {loading && (
-            <div className="d-flex justify-content-start mb-2">
-              <div
-                style={{
-                  maxWidth: '80%',
-                  padding: '10px 15px',
-                  borderRadius: '15px',
-                  backgroundColor: '#e9ecef',
-                  color: 'black',
-                }}
-              >
-                Escribiendo...
-              </div>
-            </div>
-          )}
-          <div ref={messagesEndRef} /> {/* Referencia para el scroll */}
-        </div>
-        <Row>
+          </Col>
+
+          {/* Imagen Derecha */}
+          <Col xs={2} className="d-none d-md-block text-center">
+            <img src="/image.png" alt="Right Decoration" className="side-image" />
+          </Col>
+        </Row>
+        <Row className="input-row mt-auto">
           <Col xs={10}>
             <Form.Control
               type="text"

@@ -1,3 +1,4 @@
+// App.js
 import './App.css';
 import React from 'react';
 import { Helmet } from 'react-helmet';
@@ -11,6 +12,7 @@ function App() {
       </Helmet>
       <header className="app-header">
         <h1>Tarantibot</h1>
+        <p className="app-subtitle">Tu asistente experto inspirado en Quentin Tarantino!</p>
       </header>
       <main className="app-main">
         <Main />

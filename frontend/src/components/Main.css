@@ -1,0 +1,16 @@
+/* Main.css */
+
+.side-image {
+    width: 100px; /* Ajusta el tamaño de las imágenes según necesidad */
+    margin-top: 20px;
+  }
+  
+  .input-row {
+    margin-bottom: 20px; /* Añade margen inferior al cuadro de texto */
+  }
+  
+  @media (max-width: 767px) {
+    .messages-container {
+      height: 400px; /* Ajusta la altura para pantallas más pequeñas */
+    }
+  }
