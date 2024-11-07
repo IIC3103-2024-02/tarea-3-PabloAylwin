@@ -15,7 +15,7 @@ function Main() {
       setLoading(true); // Indica que está cargando
 
       // Hacer una llamada al backend para obtener una respuesta
-      axios.post('http://localhost:8000/ask', { query: userMessage })
+      axios.post('https://tarantibot-backend.onrender.com/ask', { query: userMessage })
         .then(response => {
           const botResponse = response.data.response;
           setMessages(prevMessages => [
