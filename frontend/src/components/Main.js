@@ -85,7 +85,7 @@ function Main() {
 
   return (
     <div className="main-content flex-grow-1 d-flex flex-column">
-      <Container className="flex-grow-1 d-flex flex-column position-relative" style={{ maxWidth: '800px' }}>
+      <Container className="flex-grow-1 d-flex flex-column position-relative" style={{ maxWidth: '1200px' }}>
         {/* Sección de Películas */}
         <Row className="peliculas-seccion mb-4">
           <Col>
@@ -107,10 +107,15 @@ function Main() {
           </Col>
         </Row>
 
-        {/* Sección de Chat */}
-        <Row className="flex-grow-1 d-flex align-items-center">
+        {/* Sección de Chat con Imágenes Laterales */}
+        <Row className="flex-grow-1 d-flex align-items-start">
+          {/* Imagen Izquierda */}
+          <Col xs={12} md={2} className="d-none d-md-block text-center">
+            <img src="/left-image.png" alt="Left Decoration" className="side-image" />
+          </Col>
+
           {/* Contenedor del Chat */}
-          <Col xs={12}>
+          <Col xs={12} md={8}>
             <div
               className="messages-container mb-3"
               style={{
@@ -118,7 +123,7 @@ function Main() {
                 borderRadius: '10px',
                 padding: '15px',
                 overflowY: 'auto',
-                height: '400px', // Ajusta la altura según necesidad
+                height: '500px', // Ajusta la altura según necesidad
               }}
             >
               {messages.map((msg, index) => (
@@ -157,6 +162,11 @@ function Main() {
               )}
               <div ref={messagesEndRef} /> {/* Referencia para el scroll */}
             </div>
+          </Col>
+
+          {/* Imagen Derecha */}
+          <Col xs={12} md={2} className="d-none d-md-block text-center">
+            <img src="/right-image.png" alt="Right Decoration" className="side-image" />
           </Col>
         </Row>
 

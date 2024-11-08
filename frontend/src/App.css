@@ -32,6 +32,7 @@
   overflow: hidden; /* Evita scroll adicional */
   display: flex;
   flex-direction: column;
+  margin-top: 100px; /* Añade un margen superior para evitar superposición con el header */
 }
 
 .main-content {

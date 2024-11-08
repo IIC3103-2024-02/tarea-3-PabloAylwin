@@ -28,7 +28,7 @@
   .messages-container {
     flex-grow: 1;
     overflow-y: auto;
-    height: 400px; /* Ajusta según necesidad */
+    height: 500px; /* Ajusta según necesidad */
   }
   
   /* Estilos para el formulario de entrada */
@@ -36,6 +36,13 @@
     margin-bottom: 20px; /* Añade margen inferior al cuadro de texto */
   }
   
+  /* Estilos para las imágenes laterales */
+  .side-image {
+    width: 100px; /* Ajusta el tamaño de las imágenes según necesidad */
+    margin-top: 20px;
+  }
+  
+  /* Media Queries */
   @media (max-width: 767px) {
     .messages-container {
       height: 300px; /* Ajusta la altura para pantallas más pequeñas */
