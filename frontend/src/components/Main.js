@@ -1,6 +1,6 @@
 // Main.js
 import React, { useState, useEffect, useRef } from 'react';
-import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import axios from 'axios';
 import './Main.css'; // Asegúrate de crear este archivo para estilos específicos
 
@@ -11,16 +11,16 @@ function Main() {
   const messagesEndRef = useRef(null); // Referencia para el scroll
 
   const peliculas = [
-    { nombre: 'Aliens', imagen: '/aliens.jpg' },
-    { nombre: 'Drive', imagen: '/drive.jpg' },
-    { nombre: 'Jaws', imagen: '/jaws.jpg' },
-    { nombre: 'Kill Bill', imagen: '/kill_bill.jpg' },
-    { nombre: 'La La Land', imagen: '/la_la_land.jpg' },
-    { nombre: 'No Country For Old Men', imagen: '/no_country_for_old_men.jpg' },
-    { nombre: 'Pulp Fiction', imagen: '/pulp_fiction.jpg' },
-    { nombre: 'The Dark Knight Rises', imagen: '/the_dark_knight_rises.jpg' },
-    { nombre: 'The Shawshank Redemption', imagen: '/the_shawshank_redemption.jpg' },
-    { nombre: 'The Silence of the Lambs', imagen: '/the_silence_of_the_lambs.jpg' },
+    'Aliens',
+    'Drive',
+    'Jaws',
+    'Kill Bill',
+    'La La Land',
+    'No Country For Old Men',
+    'Pulp Fiction',
+    'The Dark Knight Rises',
+    'The Shawshank Redemption',
+    'The Silence of the Lambs',
   ];
 
   const handleSend = () => {
@@ -85,20 +85,22 @@ function Main() {
 
   return (
     <div className="main-content flex-grow-1 d-flex flex-column">
-      <Container className="flex-grow-1 d-flex flex-column position-relative" style={{ maxWidth: '1200px' }}>
+      <Container className="flex-grow-1 d-flex flex-column position-relative" style={{ maxWidth: '800px' }}>
         {/* Sección de Películas */}
         <Row className="peliculas-seccion mb-4">
           <Col>
             <h2 className="peliculas-titulo text-center">Películas Disponibles para Consultar</h2>
-            <Row className="mt-3">
+            <Row className="mt-3 justify-content-center">
               {peliculas.map((pelicula, index) => (
-                <Col xs={12} sm={6} md={4} lg={3} key={index} className="mb-4">
-                  <Card className="pelicula-card h-100" onClick={() => handleSelectPelicula(pelicula.nombre)}>
-                    <Card.Img variant="top" src={pelicula.imagen} alt={pelicula.nombre} className="pelicula-imagen" />
-                    <Card.Body>
-                      <Card.Title className="text-center">{pelicula.nombre}</Card.Title>
-                    </Card.Body>
-                  </Card>
+                <Col xs={6} sm={4} md={3} key={index} className="mb-3">
+                  <Button
+                    variant="outline-primary"
+                    className="w-100 pelicula-boton"
+                    onClick={() => handleSelectPelicula(pelicula)}
+                    disabled={loading}
+                  >
+                    {pelicula}
+                  </Button>
                 </Col>
               ))}
             </Row>
@@ -107,13 +109,8 @@ function Main() {
 
         {/* Sección de Chat */}
         <Row className="flex-grow-1 d-flex align-items-center">
-          {/* Imagen Izquierda */}
-          <Col xs={12} md={2} className="d-none d-md-block text-center">
-            <img src="/left-image.png" alt="Left Decoration" className="side-image" />
-          </Col>
-
           {/* Contenedor del Chat */}
-          <Col xs={12} md={8}>
+          <Col xs={12}>
             <div
               className="messages-container mb-3"
               style={{
@@ -121,7 +118,7 @@ function Main() {
                 borderRadius: '10px',
                 padding: '15px',
                 overflowY: 'auto',
-                height: '500px', // Ajusta la altura según necesidad
+                height: '400px', // Ajusta la altura según necesidad
               }}
             >
               {messages.map((msg, index) => (
@@ -160,11 +157,6 @@ function Main() {
               )}
               <div ref={messagesEndRef} /> {/* Referencia para el scroll */}
             </div>
-          </Col>
-
-          {/* Imagen Derecha */}
-          <Col xs={12} md={2} className="d-none d-md-block text-center">
-            <img src="/right-image.png" alt="Right Decoration" className="side-image" />
           </Col>
         </Row>
 

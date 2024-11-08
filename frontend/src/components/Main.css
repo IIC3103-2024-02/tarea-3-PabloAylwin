@@ -1,41 +1,52 @@
 /* Main.css */
 
-/* Estilos para las tarjetas de películas */
-.pelicula-card {
-    cursor: pointer;
-    transition: transform 0.2s;
+/* Estilos para los botones de películas */
+.pelicula-boton {
+    padding: 10px 0;
+    font-size: 1em;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s;
   }
   
-  .pelicula-card:hover {
-    transform: scale(1.05);
+  .pelicula-boton:hover {
+    background-color: #007bff;
+    color: white;
   }
   
-  .pelicula-imagen {
-    height: 200px;
-    object-fit: cover;
+  /* Estilos para la sección de películas */
+  .peliculas-seccion {
+    padding: 10px 0;
   }
   
   .peliculas-titulo {
-    font-size: 1.5em;
-    font-weight: bold;
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: #2c3e50;
   }
   
-  /* Estilos para las imágenes laterales */
-  .side-image {
-    width: 100px; /* Ajusta el tamaño de las imágenes según necesidad */
-    margin-top: 20px;
+  /* Estilos para la sección de mensajes */
+  .messages-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    height: 400px; /* Ajusta según necesidad */
   }
   
+  /* Estilos para el formulario de entrada */
   .input-row {
     margin-bottom: 20px; /* Añade margen inferior al cuadro de texto */
   }
   
   @media (max-width: 767px) {
     .messages-container {
-      height: 400px; /* Ajusta la altura para pantallas más pequeñas */
+      height: 300px; /* Ajusta la altura para pantallas más pequeñas */
     }
   
-    .pelicula-imagen {
-      height: 150px;
+    .peliculas-titulo {
+      font-size: 1.5em;
+    }
+  
+    .pelicula-boton {
+      font-size: 0.9em;
+      padding: 8px 0;
     }
   }
