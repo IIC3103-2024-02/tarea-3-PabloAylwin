@@ -1,6 +1,6 @@
 // Main.js
 import React, { useState, useEffect, useRef } from 'react';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { Container, Col, Form, Button } from 'react-bootstrap';
 import axios from 'axios';
 import './Main.css'; // Asegúrate de crear este archivo para estilos específicos
 
