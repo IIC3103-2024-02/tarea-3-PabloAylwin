@@ -35,5 +35,5 @@
   overflow: hidden; /* Evita scroll adicional */
   display: flex;
   flex-direction: column;
-  padding-top: 80px; /* Espacio para el header (ajustar según altura real) */
+  padding-top: 110px; /* Espacio para el header (ajustar según altura real) */
 }

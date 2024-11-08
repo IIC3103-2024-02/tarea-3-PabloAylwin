@@ -1,6 +1,6 @@
 // Main.js
 import React, { useState, useEffect, useRef } from 'react';
-import { Container, Col, Form, Button } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import axios from 'axios';
 import './Main.css'; // Asegúrate de crear este archivo para estilos específicos
 
@@ -150,8 +150,13 @@ function Main() {
 
         {/* Columna Derecha: Imágenes Laterales */}
         <Col xs={12} md={3} className="images-col d-none d-md-flex flex-column align-items-center">
-          <img src="/image.png" alt="Left Decoration" className="side-image mb-3" />
-          <img src="/image.png" alt="Right Decoration" className="side-image" />
+          {/* Seis imágenes iguales */}
+          <img src="/image.png" alt="Decoration 1" className="side-image mb-3" />
+          <img src="/image.png" alt="Decoration 2" className="side-image mb-3" />
+          <img src="/image.png" alt="Decoration 3" className="side-image mb-3" />
+          <img src="/image.png" alt="Decoration 4" className="side-image mb-3" />
+          <img src="/image.png" alt="Decoration 5" className="side-image mb-3" />
+          <img src="/image.png" alt="Decoration 6" className="side-image" />
         </Col>
       </Container>
     </div>
