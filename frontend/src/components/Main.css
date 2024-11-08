@@ -1,6 +1,27 @@
 /* Main.css */
 
-.side-image {
+/* Estilos para las tarjetas de películas */
+.pelicula-card {
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .pelicula-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .pelicula-imagen {
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .peliculas-titulo {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  
+  /* Estilos para las imágenes laterales */
+  .side-image {
     width: 100px; /* Ajusta el tamaño de las imágenes según necesidad */
     margin-top: 20px;
   }
@@ -12,5 +33,9 @@
   @media (max-width: 767px) {
     .messages-container {
       height: 400px; /* Ajusta la altura para pantallas más pequeñas */
+    }
+  
+    .pelicula-imagen {
+      height: 150px;
     }
   }

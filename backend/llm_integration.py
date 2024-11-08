@@ -107,7 +107,7 @@ def generate_response(user_query: str) -> str:
         # Recuperar fragmentos relevantes
         start_time = time.time()
         logger.debug("Iniciando búsqueda de similitud...")
-        k = 2
+        k = 1
         results = db.similarity_search(user_query, k=k)
         logger.debug(f"Búsqueda completada en {time.time() - start_time:.2f} segundos")
         
