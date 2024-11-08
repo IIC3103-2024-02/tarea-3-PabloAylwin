@@ -1,4 +1,5 @@
 /* App.css */
+
 .App {
   display: flex;
   flex-direction: column;
@@ -11,9 +12,11 @@
   padding: 20px;
   text-align: center;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  position: sticky;
+  position: fixed; /* Cambiado de sticky a fixed */
   top: 0;
+  width: 100%; /* Asegura que el header ocupe todo el ancho */
   z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Añade sombra para separar del contenido */
 }
 
 .app-header h1 {
@@ -32,21 +35,5 @@
   overflow: hidden; /* Evita scroll adicional */
   display: flex;
   flex-direction: column;
-  margin-top: 100px; /* Añade un margen superior para evitar superposición con el header */
-}
-
-.main-content {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.messages-container {
-  flex-grow: 1;
-  overflow-y: auto;
-}
-
-body {
-  font-family: 'Roboto', sans-serif;
+  padding-top: 80px; /* Espacio para el header (ajustar según altura real) */
 }

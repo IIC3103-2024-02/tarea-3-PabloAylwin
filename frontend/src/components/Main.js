@@ -85,94 +85,50 @@ function Main() {
 
   return (
     <div className="main-content flex-grow-1 d-flex flex-column">
-      <Container className="flex-grow-1 d-flex flex-column position-relative" style={{ maxWidth: '1200px' }}>
-        {/* Sección de Películas */}
-        <Row className="peliculas-seccion mb-4">
-          <Col>
-            <h2 className="peliculas-titulo text-center">Películas Disponibles para Consultar</h2>
-            <Row className="mt-3 justify-content-center">
-              {peliculas.map((pelicula, index) => (
-                <Col xs={6} sm={4} md={3} key={index} className="mb-3">
-                  <Button
-                    variant="outline-primary"
-                    className="w-100 pelicula-boton"
-                    onClick={() => handleSelectPelicula(pelicula)}
-                    disabled={loading}
-                  >
-                    {pelicula}
-                  </Button>
-                </Col>
-              ))}
-            </Row>
-          </Col>
-        </Row>
+      <Container fluid className="flex-grow-1 d-flex" style={{ maxWidth: '1200px' }}>
+        {/* Columna Izquierda: Películas */}
+        <Col xs={12} md={3} className="peliculas-col">
+          <h2 className="peliculas-titulo text-center">Películas Disponibles</h2>
+          <div className="peliculas-lista">
+            {peliculas.map((pelicula, index) => (
+              <Button
+                key={index}
+                variant="outline-primary"
+                className="pelicula-boton mb-2 w-100"
+                onClick={() => handleSelectPelicula(pelicula)}
+                disabled={loading}
+              >
+                {pelicula}
+              </Button>
+            ))}
+          </div>
+        </Col>
 
-        {/* Sección de Chat con Imágenes Laterales */}
-        <Row className="flex-grow-1 d-flex align-items-start">
-          {/* Imagen Izquierda */}
-          <Col xs={12} md={2} className="d-none d-md-block text-center">
-            <img src="/left-image.png" alt="Left Decoration" className="side-image" />
-          </Col>
-
-          {/* Contenedor del Chat */}
-          <Col xs={12} md={8}>
-            <div
-              className="messages-container mb-3"
-              style={{
-                backgroundColor: '#f8f9fa',
-                borderRadius: '10px',
-                padding: '15px',
-                overflowY: 'auto',
-                height: '500px', // Ajusta la altura según necesidad
-              }}
-            >
-              {messages.map((msg, index) => (
+        {/* Columna Central: Chat */}
+        <Col xs={12} md={6} className="chat-col d-flex flex-column">
+          <div className="messages-container flex-grow-1 mb-3">
+            {messages.map((msg, index) => (
+              <div
+                key={index}
+                className={`d-flex ${msg.sender === 'user' ? 'justify-content-end' : 'justify-content-start'} mb-2`}
+              >
                 <div
-                  key={index}
-                  className={`d-flex ${msg.sender === 'user' ? 'justify-content-end' : 'justify-content-start'} mb-2`}
+                  className={`message-bubble ${msg.sender === 'user' ? 'user-message' : 'bot-message'}`}
                 >
-                  <div
-                    style={{
-                      maxWidth: '80%',
-                      padding: '10px 15px',
-                      borderRadius: '15px',
-                      backgroundColor: msg.sender === 'user' ? '#007bff' : '#e9ecef',
-                      color: msg.sender === 'user' ? 'white' : 'black',
-                      textAlign: 'justify',
-                    }}
-                  >
-                    {msg.text}
-                  </div>
+                  {msg.text}
                 </div>
-              ))}
-              {loading && (
-                <div className="d-flex justify-content-start mb-2">
-                  <div
-                    style={{
-                      maxWidth: '80%',
-                      padding: '10px 15px',
-                      borderRadius: '15px',
-                      backgroundColor: '#e9ecef',
-                      color: 'black',
-                    }}
-                  >
-                    Escribiendo...
-                  </div>
+              </div>
+            ))}
+            {loading && (
+              <div className="d-flex justify-content-start mb-2">
+                <div className="message-bubble bot-message">
+                  Escribiendo...
                 </div>
-              )}
-              <div ref={messagesEndRef} /> {/* Referencia para el scroll */}
-            </div>
-          </Col>
-
-          {/* Imagen Derecha */}
-          <Col xs={12} md={2} className="d-none d-md-block text-center">
-            <img src="/right-image.png" alt="Right Decoration" className="side-image" />
-          </Col>
-        </Row>
-
-        {/* Formulario de Entrada de Texto */}
-        <Row className="input-row mt-auto">
-          <Col xs={10}>
+              </div>
+            )}
+            <div ref={messagesEndRef} /> {/* Referencia para el scroll */}
+          </div>
+          <div className="input-row">
             <Form.Control
               type="text"
               placeholder="Escribe un mensaje..."
@@ -181,13 +137,22 @@ function Main() {
               onKeyPress={(e) => e.key === 'Enter' && !loading && handleSend()}
               disabled={loading} // Deshabilitar el input mientras carga
             />
-          </Col>
-          <Col xs={2} className="d-flex align-items-center">
-            <Button onClick={handleSend} variant="primary" className="w-100" disabled={loading}>
+            <Button
+              onClick={handleSend}
+              variant="primary"
+              className="mt-2 w-100"
+              disabled={loading}
+            >
               Enviar
             </Button>
-          </Col>
-        </Row>
+          </div>
+        </Col>
+
+        {/* Columna Derecha: Imágenes Laterales */}
+        <Col xs={12} md={3} className="images-col d-none d-md-flex flex-column align-items-center">
+          <img src="/image.png" alt="Left Decoration" className="side-image mb-3" />
+          <img src="/image.png" alt="Right Decoration" className="side-image" />
+        </Col>
       </Container>
     </div>
   );

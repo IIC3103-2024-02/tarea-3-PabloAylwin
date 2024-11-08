@@ -1,7 +1,26 @@
 /* Main.css */
 
-/* Estilos para los botones de películas */
-.pelicula-boton {
+/* Estilos para la columna de películas */
+.peliculas-col {
+    padding: 20px;
+    border-right: 1px solid #dee2e6;
+    background-color: #f8f9fa;
+    height: calc(100vh - 80px); /* Altura total menos el header */
+    overflow-y: auto;
+  }
+  
+  .peliculas-titulo {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #2c3e50;
+  }
+  
+  .peliculas-lista {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .pelicula-boton {
     padding: 10px 0;
     font-size: 1em;
     border-radius: 8px;
@@ -13,39 +32,83 @@
     color: white;
   }
   
-  /* Estilos para la sección de películas */
-  .peliculas-seccion {
-    padding: 10px 0;
+  /* Estilos para la columna de chat */
+  .chat-col {
+    padding: 20px;
+    height: calc(100vh - 80px); /* Altura total menos el header */
+    display: flex;
+    flex-direction: column;
   }
   
-  .peliculas-titulo {
-    font-size: 1.8em;
-    margin-bottom: 15px;
-    color: #2c3e50;
-  }
-  
-  /* Estilos para la sección de mensajes */
   .messages-container {
-    flex-grow: 1;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 15px;
     overflow-y: auto;
-    height: 500px; /* Ajusta según necesidad */
+    flex-grow: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
-  /* Estilos para el formulario de entrada */
+  .message-bubble {
+    max-width: 80%;
+    padding: 10px 15px;
+    border-radius: 15px;
+    text-align: justify;
+  }
+  
+  .user-message {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .bot-message {
+    background-color: #e9ecef;
+    color: black;
+  }
+  
   .input-row {
-    margin-bottom: 20px; /* Añade margen inferior al cuadro de texto */
+    display: flex;
+    flex-direction: column;
   }
   
-  /* Estilos para las imágenes laterales */
+  .input-row .form-control {
+    border-radius: 8px;
+  }
+  
+  .input-row .btn {
+    margin-top: 10px;
+    border-radius: 8px;
+  }
+  
+  /* Estilos para la columna de imágenes */
+  .images-col {
+    padding: 20px;
+    border-left: 1px solid #dee2e6;
+    background-color: #f8f9fa;
+    height: calc(100vh - 80px); /* Altura total menos el header */
+    overflow-y: auto;
+  }
+  
   .side-image {
     width: 100px; /* Ajusta el tamaño de las imágenes según necesidad */
-    margin-top: 20px;
+    margin-bottom: 20px;
   }
   
-  /* Media Queries */
   @media (max-width: 767px) {
+    .peliculas-col {
+      display: none; /* Oculta la columna de películas en pantallas pequeñas */
+    }
+  
+    .images-col {
+      display: none; /* Ya está oculto por Bootstrap, pero se asegura aquí */
+    }
+  
+    .chat-col {
+      padding: 10px;
+    }
+  
     .messages-container {
-      height: 300px; /* Ajusta la altura para pantallas más pequeñas */
+      height: calc(100vh - 160px); /* Ajusta la altura para pantallas pequeñas */
     }
   
     .peliculas-titulo {
